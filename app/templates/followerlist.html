@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h3>Follower list for user {{ user.username }}</h3>
+	{% if not followers %}
+	<span>This person has no followers</span>
+	{% endif %}
+	{% for follower in followers %}
+	<p>[{{ follower }}]</p>
+	{% endfor	 %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<h1>{{ user.username }}</h1>
+	{% if current_user.username == user.username %}
+	<a href="{{ url_for('editprofile', username=user.username)}}">Edit profile</a>
+	{% endif %}
+	<h3>About me:</h3>
+	{% if user.about_me %}
+	<p>{{ user.about_me }}</p>
+	{% else %}
+	<p>Update your proile to add an about me page</p>
+	{% endif %}
+	<p>
+		{% if current_user.username == user.username %}
+		<a href="{{ url_for('makepost') }}">Make a new blog post</a>
+		{% endif %}
+		<h1>Posts</h1>
+		{% for post in posts %}
+			<h3>Title: {{ post.title }}</h3>
+			<p>Post: {{ post.content }}</p>
+		{% endfor %}
+	</p>
+{% endblock %}
